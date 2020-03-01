@@ -60,9 +60,6 @@ namespace ProductManagementMVC.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult git()
-        {
-            return View("Index");
-        }
+
     }
 }
