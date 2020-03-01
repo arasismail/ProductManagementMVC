@@ -1,0 +1,30 @@
+﻿@using ProductManagementMVC.Models.EntityFramework
+@model List<Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a class="btn btn-success" href="/Kategori/Kaydet">Kategori Ekle</a>
+<h2>Kategori Listesi</h2>
+<table class="table table-bordered" id="tblKategoriler">
+    <thead>
+        <tr>
+            <th>Kategori Id</th>
+            <th>Kategori Ad</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var kategori in Model)
+        {
+        <tr>
+            <th>@kategori.KategoriId</th>
+            <td>@kategori.KategoriAd</td>
+            <td><a class="btn btn-primary" href="/Kategori/Guncelle/@kategori.KategoriId">Güncelle</a></td>
+            <td><a class="btn btn-warning" href="/Kategori/Sil/@kategori.KategoriId">Sil</a></td>
+        </tr>
+        }
+    </tbody>
+</table>

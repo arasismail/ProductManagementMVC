@@ -1,0 +1,33 @@
+﻿@model List<ProductManagementMVC.Models.EntityFramework.Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Html.ActionLink("Ürün Ekle", "Kaydet", "Urun", null, new {@class="btn btn-success" })
+<h2>Ürün Listesi</h2>
+<table class="table table-bordered" id="tblUrunler">
+    <thead>
+        <tr>
+            <th>Ürün Id</th>
+            <th>Ürün Adı</th>
+            <th>Ürün Kategorisi</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var urun in Model)
+        {
+            <tr>
+                <th>@urun.UrunId</th>
+                <td>@urun.UrunAd</td>
+                <td>@urun.Kategori.KategoriAd</td>
+                <td><a class="btn btn-primary" href="/Urun/Guncelle/@urun.UrunId">Güncelle</a></td>
+                <td><a class="btn btn-warning" href="/Urun/Sil/@urun.UrunId">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

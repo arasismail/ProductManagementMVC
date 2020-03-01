@@ -1,0 +1,32 @@
+﻿@model ProductManagementMVC.ViewMoldes.UrunFormViewMoleds
+@{
+    ViewBag.Title = "UrunForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ürün Formu</h2>
+@Html.ValidationSummary()
+@using (Html.BeginForm("Kaydet", "Urun", FormMethod.Post))
+{   
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Urun.UrunAd)
+        @Html.TextBoxFor(m => m.Urun.UrunAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Urun.UrunAd)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Urun.UrunKategoriId)
+        @Html.DropDownListFor(m => m.Urun.UrunKategoriId, new SelectList(Model.Kategoriler, "KategoriId", "KategoriAd"), "Kategori Seçiniz", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Urun.UrunKategoriId)
+    </div>
+    @Html.HiddenFor(m => m.Urun.UrunId)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+
+}
+
+@section scripts
+    {
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    }
+

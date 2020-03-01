@@ -1,0 +1,24 @@
+﻿@model ProductManagementMVC.Models.EntityFramework.Kategori
+@{
+    ViewBag.Title = "KategoriForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Kategori Formu</h2>
+@using (Html.BeginForm("Kaydet", "Kategori", FormMethod.Post))
+{   
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.KategoriAd)
+        @Html.TextBoxFor(m => m.KategoriAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.KategoriAd)
+    </div>
+    @Html.HiddenFor(m => m.KategoriId)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+
+@section scripts
+    {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
